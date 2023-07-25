@@ -1,0 +1,39 @@
+import static com.mongodb.client.model.Filters.eq;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import org.bson.conversions.Bson;
+import java.util.concurrent.TimeUnit;
+import org.bson.Document;
+import com.mongodb.client.FindIterable;
+
+/*
+ * Requires the MongoDB Java Driver.
+ * https://mongodb.github.io/mongo-java-driver
+ */
+
+MongoClient mongoClient = new MongoClient(
+    new MongoClientURI(
+        "mongodb://localhost:27017/"
+    )
+);
+
+MongoDatabase database = mongoClient.getDatabase("shop");
+
+MongoCollection<Document> collection = database.getCollection("memo");
+
+Bson filter = eq("office", "InnoZ");
+
+FindIterable<Document> result = collection.find(filter);
+
+update member ==> collection
+set tel = ? ==> Updates.set()
+where id = ? ==> filter(json)
+
+
+
+
+
+
+
